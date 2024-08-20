@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react';
 import Header from './compenents/Header';
+import Body from './compenents/Body';
 
 
 
@@ -26,7 +27,7 @@ function App() {
   return (
     <>
     <Header isDark={isDark} setDark={setDark}/>
-      
+    <Body isDark={isDark} />
     </>
   )
 }
