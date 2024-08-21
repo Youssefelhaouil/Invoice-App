@@ -10,7 +10,7 @@ function Header({ isDark, setDark }) {
     return (
         <>
             <div className='z-10 fixed flex flex-col lg:flex-row  justify-between w-[103px] h-screen rounded-r-3xl lg:rounded-none  lg:w-screen lg:h-[72px] bg-dark-blue shadow-md'>
-                <div className='bg-primary-1 h-[103px] w-[103px] lg:w-[72px] lg:h-[72px] rounded-r-3xl  grid place-items-center '>
+                <div className='bg-primary-1 h-[103px] w-[103px] lg:w-[72px] lg:h-[72px] rounded-r-xl  grid place-items-center '>
                     <img  src={Logo} alt="" />
                 </div>
                 <div className='flex flex-col lg:flex-row justify-center items-center py-8 lg:py-2 lg:px-2 gap-8 lg:gap-6 '>

@@ -1,11 +1,11 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Header from './compenents/Header';
 import Body from './compenents/Body';
 
 
 
 function App() {
-  const[isDark,setDark]=useState(false);
+  const [isDark, setDark] = useState(false);
 
   useEffect(() => {
 
@@ -20,14 +20,17 @@ function App() {
 
   }, [isDark])
 
-  useEffect(()=>{
+  useEffect(() => {
 
-  },[])
+  }, [])
 
   return (
     <>
-    <Header isDark={isDark} setDark={setDark}/>
-    <Body isDark={isDark} />
+      <Header isDark={isDark} setDark={setDark} />
+      <Body isDark={isDark} />
+
+      {/* <InvoiceDetails isDark={isDark} /> */}
+
     </>
   )
 }
