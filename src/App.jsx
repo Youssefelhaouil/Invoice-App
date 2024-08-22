@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
 import Header from './compenents/Header';
 import Body from './compenents/Body';
+import { InvoiceProvider } from './context/InvoiceContext.jsx';
+// import InvoiceDetails from './BodyCompenents/InvoiceDetails'
+
 
 
 
@@ -26,10 +29,13 @@ function App() {
 
   return (
     <>
-      <Header isDark={isDark} setDark={setDark} />
-      <Body isDark={isDark} />
+      <InvoiceProvider>
 
-      {/* <InvoiceDetails isDark={isDark} /> */}
+        <Header isDark={isDark} setDark={setDark} />
+        <Body isDark={isDark} />
+
+        {/* <InvoiceDetails isDark={isDark} /> */}
+      </InvoiceProvider>
 
     </>
   )
