@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import Button from './BodyCompenents/Button'
 import NothingPage from './BodyCompenents/NothingPage'
 import InvoiceForm from './BodyCompenents/InvoiceForm'
@@ -7,8 +7,7 @@ import { InvoiceContext } from '/src/context/InvoiceContext.jsx';
 
 
 
-function Body({ isDark }) {
-    const [newInvoice, setNewInvoice] = useState(false);
+function Body({ isDark, setNewInvoice, newInvoice }) {
     const { invoices } = useContext(InvoiceContext);
 
 
@@ -30,8 +29,9 @@ function Body({ isDark }) {
                     <InvoiceForm newInvoice={newInvoice} setNewInvoice={setNewInvoice} isDark={isDark} />
                 </div>
             }
-        </>
-    )
+            
+            </>
+            )
 }
 
-export default Body
+            export default Body

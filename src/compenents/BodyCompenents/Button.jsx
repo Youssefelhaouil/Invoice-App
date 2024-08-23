@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { FaPlus } from "react-icons/fa6";
+import { InvoiceContext } from '/src/context/InvoiceContext.jsx';
 
 
-function Button({ isDark, newInvoice, setNewInvoice }) {
+
+
+function Button({ isDark, setNewInvoice }) {
+    const { invoices } = useContext(InvoiceContext);
+
     return (
         <>
             <div className='flex justify-between'>
@@ -10,9 +15,13 @@ function Button({ isDark, newInvoice, setNewInvoice }) {
                     <h1 className={`font-sans font-bold text-[35px] md:text-[24px] ${isDark ? "text-white" : "text-secondary-black"}`}>
                         Invoices
                     </h1>
-                    <h5 className={` font-sans font-normal text-[13px] ${isDark ? "text-white" : "text-secondary-black"}`}>
-                        No Invoices
+                    {invoices.length > 0 ? <h5 className={` font-sans font-normal text-[13px] ${isDark ? "text-white" : "text-secondary-black"}`}>
+                        There are {invoices.length} invoices
                     </h5>
+
+                    :<h5 className={` font-sans font-normal text-[13px] ${isDark ? "text-white" : "text-secondary-black"}`}>
+                        No Invoices
+                    </h5>}
                 </div>
                 <div className='flex gap-2 items-center'>
 

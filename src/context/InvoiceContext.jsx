@@ -8,10 +8,21 @@ export const InvoiceProvider = ({ children }) => {
     const addInvoice = (newInvoice) => {
         setInvoices([...invoices, newInvoice]);
     };
+    const deleteInvoice = (id) => {
+        setInvoices((prevInvoices) => prevInvoices.filter(invoice => invoice.id !== id));
+    };
+    const updateInvoiceStatus = (id, updatedInvoice) => {
+        setInvoices(prevInvoices =>
+            prevInvoices.map(invoice =>
+                invoice.id === id ? { ...invoice, ...updatedInvoice } : invoice
+            )
+        );
+    };
+    console.log(invoices)
 
 
     return (
-        <InvoiceContext.Provider value={{ invoices, addInvoice }}>
+        <InvoiceContext.Provider value={{ invoices, addInvoice, updateInvoiceStatus ,deleteInvoice }}>
             {children}
         </InvoiceContext.Provider>
     );
