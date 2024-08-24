@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BillFrom({ isDark, billFrom = {}, setBillFrom }) { // Added default empty object for billFrom
+function BillFrom({ isDark, billFrom = {}, setBillFrom, }) { // Added default empty object for billFrom
     const handleChange = (e) => {
         const { name, value } = e.target;
         setBillFrom(prev => ({

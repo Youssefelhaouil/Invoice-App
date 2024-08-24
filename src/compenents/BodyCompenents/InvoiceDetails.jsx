@@ -4,12 +4,14 @@ import { IoIosArrowBack } from "react-icons/io";
 import { FaCircle } from "react-icons/fa";
 import { InvoiceContext } from '/src/context/InvoiceContext.jsx';
 import DeleteConfirmation from './DeleteConfirmation'
+import InvoiceForm from './InvoiceForm';
 
 
-function InvoiceDetails({ isDark }) {
+function InvoiceDetails({ isDark,newInvoice, setNewInvoice }) {
     const { invoices, updateInvoiceStatus } = useContext(InvoiceContext);
     const { invoiceId } = useParams();
-    const [deleteClicked , setDeleteClicked]=useState(false)
+    const [deleteClicked, setDeleteClicked] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
 
     const invoice = invoices.find(inv => inv.id === invoiceId);
 
@@ -64,8 +66,8 @@ function InvoiceDetails({ isDark }) {
                             {invoice.type === "pending" ? pendingCard() : invoice.type === "draft" ? draftCard() : paidCard()}
                         </div>
                         <div className='flex gap-1 md:hidden'>
-                            <button className={`bg-white text-m-gray hover:bg-gray-200 px-4 font-sans font-semibold text-center h-12 w-[73px] rounded-full`}> Edit</button>
-                            <button onClick={()=> setDeleteClicked(true)} className={`bg-accent-red hover:bg-accent-light text-white px-4 font-sans font-semibold text-center h-12 w-[89px] rounded-full`}> Delete</button>
+                            <button onClick={() => setIsEditing(true)} className={`bg-white text-m-gray hover:bg-gray-200 px-4 font-sans font-semibold text-center h-12 w-[73px] rounded-full`}> Edit</button>
+                            <button onClick={() => setDeleteClicked(true)} className={`bg-accent-red hover:bg-accent-light text-white px-4 font-sans font-semibold text-center h-12 w-[89px] rounded-full`}> Delete</button>
                             {invoice.type !== "pending" ? null : <button onClick={handleMarkAsPaid} className={`bg-primary-1 hover:bg-primary-h text-white px-5 font-sans font-semibold text-center h-12 w-[131px] rounded-full`}> Mark as Paid</button>}
                         </div>
                     </div>
@@ -154,6 +156,12 @@ function InvoiceDetails({ isDark }) {
             {deleteClicked && <div className='fixed top-0 left-0 bottom-0 right-0 h-screen bg-black bg-opacity-50'>
                 <DeleteConfirmation setDeleteClicked={setDeleteClicked} isDark={isDark} invoice={invoice} />
             </div>}
+            {
+                isEditing &&
+                <div className='fixed top-0 left-0 bottom-0 right-0 h-screen bg-black bg-opacity-50'>
+                    <InvoiceForm newInvoice={newInvoice} setNewInvoice={setNewInvoice} isDark={isDark} isEditing={isEditing} setIsEditing={setIsEditing} invoice={invoice} />
+                </div>
+            }
         </>
     );
 }

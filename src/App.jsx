@@ -27,8 +27,14 @@ function App() {
   }, [isDark])
 
   useEffect(() => {
-
-  }, [])
+    const navigationEntries = performance.getEntriesByType('navigation');
+    if (navigationEntries.length > 0) {
+      const navigationType = navigationEntries[0].type;
+      if (navigationType === 'reload') {
+        window.location.replace('/'); // Redirect to home page on reload
+      }
+    }
+  }, []);
 
   return (
     <>
@@ -38,7 +44,7 @@ function App() {
           <Header isDark={isDark} setDark={setDark} />
           <Routes>
             <Route path='/' element={<Body isDark={isDark} setNewInvoice={setNewInvoice} newInvoice={newInvoice} />} />
-            <Route path='/invoice/:invoiceId' element={<InvoiceDetails isDark={isDark} setNewInvoice={setNewInvoice}  />} />
+            <Route path='/invoice/:invoiceId' element={<InvoiceDetails isDark={isDark} setNewInvoice={setNewInvoice} newInvoice={newInvoice} />} />
 
           </Routes>
 

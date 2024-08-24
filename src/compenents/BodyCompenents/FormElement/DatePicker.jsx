@@ -1,7 +1,7 @@
 import React from 'react';
 import { format, addDays } from 'date-fns';
 
-function DatePicker({ isDark, date, setDate }) {
+function DatePicker({ isDark, date, setDate ,invoice,isEditing }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 

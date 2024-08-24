@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DescriptionForm({isDark,setDescription}) {
+function DescriptionForm({isDark,setDescription ,invoice,isEditing}) {
     return (
         <>
             <div className='flex flex-col gap-1'>

@@ -8,8 +8,8 @@ import ItemsList from './FormElement/ItemsList';
 import DescriptionForm from './FormElement/DescriptionForm';
 import { InvoiceContext } from '/src/context/InvoiceContext.jsx';
 
-function InvoiceForm({ isDark, setNewInvoice }) {
-    const { addInvoice  } = useContext(InvoiceContext);
+function InvoiceForm({ isDark, newInvoice, setNewInvoice, isEditing, setIsEditing, invoice }) {
+    const { addInvoice } = useContext(InvoiceContext);
 
     const [billFrom, setBillFrom] = useState({
         StreetAdress: " ",
@@ -64,7 +64,7 @@ function InvoiceForm({ isDark, setNewInvoice }) {
     const addItem = () => {
         setItems([...items, { name: '', qty: 0, price: 0, total: 0 }]);
     };
-    
+
 
     return (
         <>
@@ -72,20 +72,29 @@ function InvoiceForm({ isDark, setNewInvoice }) {
             h-screen overflow-y-scroll   md:w-full rounded-lg pb-[40px] md:pb-[80px] 
         ${isDark ? "bg-secondary-black " : "bg-white"}`}>
 
-                <div className='flex justify-between'>
-                    <h1 className={`font-sans font-bold text-xl ${isDark ? "text-white" : "text-secondary-black"}`}>New Invoice</h1>
-                    <IoCloseSharp onClick={() => setNewInvoice(false)}
-                        className='text-primary-1 hover:text-primary-h cursor-pointer text-[30px]   ' />
-                </div>
+                {
+                    newInvoice &&
+                    <div className='flex justify-between'>
+                        <h1 className={`font-sans font-bold text-xl ${isDark ? "text-white" : "text-secondary-black"}`}>New Invoice</h1>
+                        <IoCloseSharp onClick={() => setNewInvoice(false)}
+                            className='text-primary-1 hover:text-primary-h cursor-pointer text-[30px]   ' />
+                    </div>
+                }
+                {isEditing &&
+                    <div className='flex justify-between'>
+                        <h1 className={`font-sans font-bold text-xl ${isDark ? "text-white" : "text-secondary-black"}`}>Edit #{invoice.id}</h1>
+                        <IoCloseSharp onClick={() => setIsEditing(false)}
+                            className='text-primary-1 hover:text-primary-h cursor-pointer text-[30px]   ' />
+                    </div>}
                 <h1 className='text-primary-1 font-sans font-bold cursor-pointer text-[15px]   '>Bill from</h1>
                 <form className='flex flex-col gap-2' action="">
-                    <BillFrom isDark={isDark} billForm={billFrom} setBillFrom={setBillFrom} />
+                    <BillFrom isDark={isDark} billForm={billFrom} setBillFrom={setBillFrom} isEditing={isEditing} invoice={invoice} />
                     <h1 className='pt-4 text-primary-1 font-sans font-bold cursor-pointer text-[15px]   '>Bill To</h1>
-                    <BillTo isDark={isDark} billTo={billTo} setBillTo={setBillTo} />
-                    <DatePicker isDark={isDark} date={date} setDate={setDate} />
-                    <DescriptionForm isDark={isDark} description={description} setDescription={setDescription} />
+                    <BillTo isDark={isDark} billTo={billTo} setBillTo={setBillTo} isEditing={isEditing} invoice={invoice} />
+                    <DatePicker isDark={isDark} date={date} setDate={setDate} isEditing={isEditing} invoice={invoice} />
+                    <DescriptionForm isDark={isDark} description={description} setDescription={setDescription} isEditing={isEditing} invoice={invoice} />
                     <h1 className='pt-4 text-m-gray font-sans font-bold cursor-pointer text-[15px]   '>Items List</h1>
-                    <ItemsList isDark={isDark} items={items} setItems={setItems} />
+                    <ItemsList isDark={isDark} items={items} setItems={setItems} isEditing={isEditing} invoice={invoice} />
                     <button type='button' onClick={addItem}
                         className={`h-[48px] rounded-full flex justify-center items-center gap-2 font-bold font-sans mt-4  
                     ${isDark ? "bg-dark-gray hover:bg-dark-blue text-white " : "bg-light-gray hover:bg-gray-400 text-secondary-black  "}`}>

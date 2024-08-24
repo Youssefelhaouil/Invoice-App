@@ -2,7 +2,7 @@ import React from 'react';
 import { MdDelete } from "react-icons/md";
 
 
-function ItemsList({ isDark, setItems, items }) {
+function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
 
     const handleNameChange = (index, value) => {
         const updatedItems = [...items];
