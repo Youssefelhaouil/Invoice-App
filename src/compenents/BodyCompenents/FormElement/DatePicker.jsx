@@ -39,6 +39,7 @@ function DatePicker({ isDark, date, setDate ,invoice,isEditing }) {
         <input
           type='date'
           onChange={handleChange}
+          value={date.date}
           name='date'
           required
           id='date'
@@ -56,6 +57,7 @@ function DatePicker({ isDark, date, setDate ,invoice,isEditing }) {
             isDark ? 'bg-dark-blue border-none text-white' : 'bg-white border text-secondary-black-light-gray'
           }`}
           name='PaymentTerms'
+          value={date.PaymentTerms}
           id='PaymentTerms'
           onChange={handleChange}
         >

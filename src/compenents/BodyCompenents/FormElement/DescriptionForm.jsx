@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DescriptionForm({isDark,setDescription ,invoice,isEditing}) {
+function DescriptionForm({isDark,description,setDescription }) {
     return (
         <>
             <div className='flex flex-col gap-1'>
@@ -10,6 +10,7 @@ function DescriptionForm({isDark,setDescription ,invoice,isEditing}) {
                     type="text"
                     name='description' 
                     id='description'
+                    value={description}
                     onChange={(e)=>setDescription(e.target.value)} 
                     required
                     className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
