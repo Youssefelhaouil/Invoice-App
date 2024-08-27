@@ -7,7 +7,7 @@ import DeleteConfirmation from './DeleteConfirmation'
 import InvoiceForm from './InvoiceForm';
 
 
-function InvoiceDetails({ isDark,newInvoice, setNewInvoice,setIsEditing,isEditing }) {
+function InvoiceDetails({ isDark, newInvoice, setNewInvoice, setIsEditing, isEditing }) {
     const { invoices, updateInvoiceStatus } = useContext(InvoiceContext);
     const { invoiceId } = useParams();
     const [deleteClicked, setDeleteClicked] = useState(false);
@@ -146,8 +146,8 @@ function InvoiceDetails({ isDark,newInvoice, setNewInvoice,setIsEditing,isEditin
                         </div>
                     </div>
                     <div className='md:flex md:justify-between md:gap-1 md:pt-4 hidden'>
-                        <button className={`bg-white text-m-gray hover:bg-gray-200 px-4 font-sans font-semibold text-center h-12 w-[73px] rounded-full`}> Edit</button>
-                        <button className={`bg-accent-red hover:bg-accent-light text-white px-4 font-sans font-semibold text-center h-12 w-[89px] rounded-full`}> Delete</button>
+                        <button onClick={() => setIsEditing(true)} className={`bg-white text-m-gray hover:bg-gray-200 px-4 font-sans font-semibold text-center h-12 w-[73px] rounded-full`}> Edit</button>
+                        <button onClick={() => setDeleteClicked(true)} className={`bg-accent-red hover:bg-accent-light text-white px-4 font-sans font-semibold text-center h-12 w-[89px] rounded-full`}> Delete</button>
                         {invoice.type !== "pending" ? null : <button onClick={handleMarkAsPaid} className={`bg-primary-1 hover:bg-primary-h text-white px-5 font-sans font-semibold text-center h-12 w-[131px] rounded-full`}> Mark as Paid</button>}
                     </div>
                 </div>
