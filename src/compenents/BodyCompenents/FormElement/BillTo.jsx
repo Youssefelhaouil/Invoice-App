@@ -1,9 +1,9 @@
 import React from 'react'
 
-function BillTo({isDark ,billTo,setBillTo , invoice,isEditing}) {
-    const handleChange= (e)=>{
-        const {name,value}= e.target;
-        setBillTo(prev=> ({...prev , [name] : value}))
+function BillTo({ isDark, billTo, setBillTo,errors }) {
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setBillTo(prev => ({ ...prev, [name]: value }))
     }
     return (
         <>
@@ -15,7 +15,10 @@ function BillTo({isDark ,billTo,setBillTo , invoice,isEditing}) {
                     name='ClientName'
                     value={billTo.ClientName}
                     onChange={handleChange}
-                    required id='ClientName' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+
+                    id='ClientName' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                {errors.ClientName && <p className="text-red-500 text-xs">{errors.ClientName}</p>}
+
             </div>
             <div className='flex flex-col gap-1'>
                 <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray" : "text-m-gray"}`}
@@ -25,30 +28,34 @@ function BillTo({isDark ,billTo,setBillTo , invoice,isEditing}) {
                     name='ClientEmail'
                     onChange={handleChange}
                     value={billTo.ClientEmail}
+                    id='ClientEmail' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                {errors.ClientEmail && <p className="text-red-500 text-xs">{errors.ClientEmail}</p>}
 
-
-                    required id='ClientEmail' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
             </div>
             <div className='flex flex-col gap-1'>
                 <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray" : "text-m-gray"}`}
-                    htmlFor="StreetAdress"> Street adress</label>
+                    htmlFor="ClientAddress"> Street adress</label>
                 <input
                     type="text"
-                    name='StreetAdress'
+                    name='ClientAddress'
                     onChange={handleChange}
-                    value={billTo.StreetAdress}
-                    required id='StreetAdress' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                    value={billTo.ClientAddress}
+                    id='ClientAddress' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                {errors.ClientAddress && <p className="text-red-500 text-xs">{errors.ClientAddress}</p>}
+
             </div>
             <div className='pt-3 flex w-full   md:grid md:grid-cols-2 gap-2'>
                 <div className='flex flex-col gap-1 w-1/3 md:w-auto  '>
                     <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray " : "text-m-gray"}`}
-                        htmlFor="City"> City</label>
+                        htmlFor="ClientCity"> City</label>
                     <input
                         type="text"
-                        name='City'
+                        name='ClientCity'
                         onChange={handleChange}
-                        value={billTo.City}
-                        required id='City' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                        value={billTo.ClientCity}
+                        id='ClientCity' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                    {errors.ClientCity && <p className="text-red-500 text-xs">{errors.ClientCity}</p>}
+
                 </div>
                 <div className='flex flex-col gap-1 w-1/3 md:w-auto'>
                     <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray" : "text-m-gray"}`}
@@ -56,19 +63,23 @@ function BillTo({isDark ,billTo,setBillTo , invoice,isEditing}) {
                     <input
                         type="text"
                         name='CodePost'
-                        value={billTo.CodePost}                        
+                        value={billTo.CodePost}
                         onChange={handleChange}
-                        required id='CodePost' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                        id='CodePost' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                    {errors.CodePost && <p className="text-red-500 text-xs">{errors.CodePost}</p>}
+
                 </div>
                 <div className='flex flex-col gap-1 w-1/3 md:w-auto'>
                     <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray" : "text-m-gray"}`}
-                        htmlFor="Country"> Country</label>
+                        htmlFor="ClientCountry"> Country</label>
                     <input
                         type="text"
-                        name='Country'
+                        name='ClientCountry'
                         onChange={handleChange}
-                        value={billTo.Country}
-                        required id='Country' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                        value={billTo.ClientCountry}
+                        id='ClientCountry' className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                    {errors.ClientCountry && <p className="text-red-500 text-xs">{errors.ClientCountry}</p>}
+
                 </div>
             </div>
         </>

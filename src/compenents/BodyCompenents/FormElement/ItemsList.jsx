@@ -2,7 +2,7 @@ import React from 'react';
 import { MdDelete } from "react-icons/md";
 
 
-function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
+function ItemsList({ isDark, setItems, items, errors }) {
 
     const handleNameChange = (index, value) => {
         const updatedItems = [...items];
@@ -27,7 +27,7 @@ function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
         const updatedItems = items.filter((_, i) => i !== index);
         setItems(updatedItems);
     };
-    
+
 
     return (
         <>
@@ -41,7 +41,9 @@ function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
                             value={item.name}
                             onChange={(e) => handleNameChange(index, e.target.value)}
                             id={`itemName-${index}`}
-                            required className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                            className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                        {errors[`itemName-${index}`] && <p className="text-red-500 text-xs">{errors[`itemName-${index}`]}</p>}
+
                     </div>
                     <div className='flex flex-col gap-1'>
                         <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray" : "text-m-gray"}`}
@@ -51,7 +53,9 @@ function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
                             value={item.qty}
                             onChange={(e) => handleQtyChange(index, e.target.value)}
                             id={`qty-${index}`}
-                            required className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                            className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                        {errors[`qty-${index}`] && <p className="text-red-500 text-xs">{errors[`qty-${index}`]}</p>}
+
                     </div>
                     <div className='flex flex-col gap-1'>
                         <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray" : "text-m-gray"}`}
@@ -63,6 +67,8 @@ function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
                             id={`price-${index}`}
                             required
                             className={`h-12  border-[1px] font-sans font-bold px-3 text-[15px]  rounded ${isDark ? "bg-dark-blue  border-none text-white " : "bg-white border-light-gray text-secondary-black"} `} />
+                        {errors[`price-${index}`] && <p className="text-red-500 text-xs">{errors[`price-${index}`]}</p>}
+
                     </div>
                     <div className='flex flex-col  gap-1'>
                         <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray" : "text-m-gray"}`}
@@ -72,7 +78,7 @@ function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
                         </h1>
                     </div>
                     {items.length > 1 && <div onClick={() => handleDelete(index)} className='flex flex-col items-center justify-center gap-1 pt-4'>
-                        <MdDelete  className='text-[20px] text-m-gray hover:text-accent-red cursor-pointer ' />
+                        <MdDelete className='text-[20px] text-m-gray hover:text-accent-red cursor-pointer ' />
 
                     </div>}
                 </div>

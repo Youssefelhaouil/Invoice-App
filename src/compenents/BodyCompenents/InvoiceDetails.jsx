@@ -106,11 +106,11 @@ function InvoiceDetails({ isDark,newInvoice, setNewInvoice,setIsEditing,isEditin
                         </div>
                         <div>
                             <h1 className='text-sm font-medium text-m-gray pb-2'>Bill To</h1>
-                            <h1 className={`text-sm font-bold ${isDark ? "text-white" : "text-secondary-black "}`}>{invoice.billToData.ClientEmail}</h1>
-                            <p className='text-sm font-medium text-m-gray'>{invoice.billToData.StreetAdress}</p>
-                            <p className='text-sm font-medium text-m-gray'>{invoice.billToData.City}</p>
+                            <h1 className={`text-sm font-bold ${isDark ? "text-white" : "text-secondary-black "}`}>{invoice.billToData.ClientName}</h1>
+                            <p className='text-sm font-medium text-m-gray'>{invoice.billToData.ClientAddress}</p>
+                            <p className='text-sm font-medium text-m-gray'>{invoice.billToData.ClientCity}</p>
                             <p className='text-sm font-medium text-m-gray'>{invoice.billToData.CodePost}</p>
-                            <p className='text-sm font-medium text-m-gray'>{invoice.billToData.Country}</p>
+                            <p className='text-sm font-medium text-m-gray'>{invoice.billToData.ClientCountry}</p>
                         </div>
                         <div>
                             <h1 className='text-sm font-medium text-m-gray pb-2'>Sent to</h1>

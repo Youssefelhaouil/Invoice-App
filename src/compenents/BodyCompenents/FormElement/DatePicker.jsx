@@ -1,7 +1,7 @@
 import React from 'react';
 import { format, addDays } from 'date-fns';
 
-function DatePicker({ isDark, date, setDate ,invoice,isEditing }) {
+function DatePicker({ isDark, date, setDate, errors }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -41,21 +41,20 @@ function DatePicker({ isDark, date, setDate ,invoice,isEditing }) {
           onChange={handleChange}
           value={date.date}
           name='date'
-          required
           id='date'
-          className={`h-12 border-[1px] font-sans font-bold px-3 text-[15px] rounded ${
-            isDark ? 'bg-dark-blue border-none text-white' : 'bg-white border text-secondary-black-light-gray'
-          }`}
+          className={`h-12 border-[1px] font-sans font-bold px-3 text-[15px] rounded ${isDark ? 'bg-dark-blue border-none text-white' : 'bg-white border text-secondary-black-light-gray'
+            }`}
         />
+        {errors.date && <p className="text-red-500 text-xs">{errors.date}</p>}
+
       </div>
       <div className='flex flex-col gap-1'>
         <label className={`font-sans font-medium text-[15px] ${isDark ? 'text-light-gray' : 'text-m-gray'}`} htmlFor='Payment'>
           Payment Terms
         </label>
         <select
-          className={`h-12 border-[1px] font-sans font-bold px-3 text-[15px] rounded ${
-            isDark ? 'bg-dark-blue border-none text-white' : 'bg-white border text-secondary-black-light-gray'
-          }`}
+          className={`h-12 border-[1px] font-sans font-bold px-3 text-[15px] rounded ${isDark ? 'bg-dark-blue border-none text-white' : 'bg-white border text-secondary-black-light-gray'
+            }`}
           name='PaymentTerms'
           value={date.PaymentTerms}
           id='PaymentTerms'
@@ -66,6 +65,8 @@ function DatePicker({ isDark, date, setDate ,invoice,isEditing }) {
           <option value='seven'>Net 7 Days</option>
           <option value='one'>Net 1 Day</option>
         </select>
+        {errors.PaymentTerms && <p className="text-red-500 text-xs">{errors.PaymentTerms}</p>}
+
       </div>
     </div>
   );
