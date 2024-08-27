@@ -5,7 +5,7 @@ import { InvoiceContext } from '/src/context/InvoiceContext.jsx';
 
 
 
-function Button({ isDark, setNewInvoice }) {
+function Button({ isDark, setNewInvoice,searchByOption }) {
     const { invoices } = useContext(InvoiceContext);
 
     return (
@@ -25,11 +25,14 @@ function Button({ isDark, setNewInvoice }) {
                 </div>
                 <div className='flex gap-2 items-center'>
 
-                    <select className={`font-sans text-[14px] font-bold w-[130px] md:w-[53px] h-[15px] ${isDark ? "bg-dark-bg text-white " : "bg-light-bg text-secondary-black"}`} name="filter" id="filter">
-                        <option value="filter"> Filter By Option</option>
-                        <option value="draft"> Draft</option>
-                        <option value="pending">Pending</option>
-                        <option value="paid">paid</option>
+                    <select onChange={(e)=>searchByOption(e.target.value) }
+                    className={`font-sans text-[14px] font-bold w-[130px] md:w-[53px] h-[15px] 
+                    ${isDark ? "bg-dark-bg text-white " : "bg-light-bg text-secondary-black"}`} 
+                    name="filter" id="filter">
+                        <option className='py-4 px-4' value="filter"> Filter By Option</option>
+                        <option className='py-4 px-4' value="draft"> Draft</option>
+                        <option className='py-4 px-4' value="pending">Pending</option>
+                        <option className='py-4 px-4' value="paid">paid</option>
                     </select>
 
 

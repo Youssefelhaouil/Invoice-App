@@ -32,7 +32,7 @@ function ItemsList({ isDark, setItems, items , invoice,isEditing }) {
     return (
         <>
             {items.map((item, index) =>
-                <div key={index} className='pt-3 grid grid-cols-[40%_10%_20%_20%_10%]  gap-2'>
+                <div key={index} className='pt-3 grid grid-cols-[35%_15%_20%_20%_10%]  gap-2'>
                     <div className='flex flex-col gap-1 '>
                         <label className={`font-sans font-medium text-[15px] ${isDark ? "text-light-gray " : "text-m-gray"}`}
                             htmlFor="ItemsName"> Items Name</label>

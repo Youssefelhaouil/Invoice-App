@@ -18,7 +18,6 @@ export const InvoiceProvider = ({ children }) => {
             )
         );
     };
-    console.log(invoices)
 
 
     return (

@@ -11,7 +11,6 @@ import { InvoiceContext } from '/src/context/InvoiceContext.jsx';
 function InvoiceForm({ isDark, newInvoice, setNewInvoice, isEditing, setIsEditing, invoice }) {
     const { addInvoice, updateInvoiceStatus } = useContext(InvoiceContext);
 
-    // Initialize state
     const [billFrom, setBillFrom] = useState({
         StreetAddress: "",
         City: "",
@@ -41,14 +40,14 @@ function InvoiceForm({ isDark, newInvoice, setNewInvoice, isEditing, setIsEditin
     ]);
 
     useEffect(() => {
-        if (isEditing && invoice) {
+        if (isEditing ) {
             setBillFrom(invoice.billFromData);
             setBillTo(invoice.billToData);
             setDate(invoice.dateData);
             setDescription(invoice.descriptionData);
             setItems(invoice.itemsData);
         }
-    }, [isEditing, invoice]);
+    }, [isEditing]);
 
     const generateUniqueId = () => {
         const randomLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
@@ -86,7 +85,7 @@ function InvoiceForm({ isDark, newInvoice, setNewInvoice, isEditing, setIsEditin
     return (
         <>
             <div className={`fixed flex flex-col gap-4 top-0 w-[719px] pl-[140px] lg:px-4 pt-8 lg:pt-4 pr-12 lg:top-[72px]   
-            h-screen overflow-y-scroll md:w-full rounded-lg pb-[40px] md:pb-[80px] 
+            h-screen overflow-y-scroll md:w-full rounded-lg pb-[40px] lg:pb-[80px] 
         ${isDark ? "bg-secondary-black " : "bg-white"}`}>
 
                 {newInvoice && (
@@ -124,10 +123,10 @@ function InvoiceForm({ isDark, newInvoice, setNewInvoice, isEditing, setIsEditin
                             Discard
                         </button>
                         <div className='flex gap-2'>
-                            <button type='button' onClick={() => handleSave("draft")} className={` bg-dark-blue text-gray-400  px-5 font-sans font-semibold text-center h-12 rounded-full hover:bg-dark-gray `}>
+                            <button  onClick={() => handleSave("draft")} className={` bg-dark-blue text-gray-400  px-5 font-sans font-semibold text-center h-12 rounded-full hover:bg-dark-gray `}>
                                 Save as Draft
                             </button>
-                            <button type='button' onClick={() => handleSave("pending")} className={` bg-primary-1 text-white  px-5 font-sans font-semibold text-center h-12 rounded-full hover:bg-primary-h `}>
+                            <button  onClick={() => handleSave("pending")} className={` bg-primary-1 text-white  px-5 font-sans font-semibold text-center h-12 rounded-full hover:bg-primary-h `}>
                                 Save & Send
                             </button>
                         </div>

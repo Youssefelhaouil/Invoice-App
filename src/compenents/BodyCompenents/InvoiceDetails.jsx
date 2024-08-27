@@ -7,11 +7,10 @@ import DeleteConfirmation from './DeleteConfirmation'
 import InvoiceForm from './InvoiceForm';
 
 
-function InvoiceDetails({ isDark,newInvoice, setNewInvoice }) {
+function InvoiceDetails({ isDark,newInvoice, setNewInvoice,setIsEditing,isEditing }) {
     const { invoices, updateInvoiceStatus } = useContext(InvoiceContext);
     const { invoiceId } = useParams();
     const [deleteClicked, setDeleteClicked] = useState(false);
-    const [isEditing, setIsEditing] = useState(false);
 
     const invoice = invoices.find(inv => inv.id === invoiceId);
 
@@ -26,7 +25,7 @@ function InvoiceDetails({ isDark,newInvoice, setNewInvoice }) {
 
     const paidCard = () => {
         return (
-            <span className='flex justify-center items-center gap-3 bg-[#e2f8f0] text-center w-[104px] h-[40px] rounded font-bold text-[#33D69F] md:mt-[-60px]'>
+            <span className='flex justify-center items-center gap-3 bg-[#e2f8f0] text-center w-[104px] h-[40px] rounded font-bold text-[#33D69F] '>
                 <FaCircle className='text-[#33D69F] text-[8px]' />
                 Paid
             </span>
@@ -44,7 +43,7 @@ function InvoiceDetails({ isDark,newInvoice, setNewInvoice }) {
 
     const draftCard = () => {
         return (
-            <span className='flex justify-center items-center gap-3 bg-[#979797ac] text-center w-[104px] h-[40px] rounded font-bold text-[#373B53] md:mt-[-60px]'>
+            <span className='flex justify-center items-center gap-3 bg-[#9797975a] text-center w-[104px] h-[40px] rounded font-bold text-[#373B53] '>
                 <FaCircle className='text-[#373B53] text-[8px]' />
                 Draft
             </span>

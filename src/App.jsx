@@ -11,6 +11,8 @@ import InvoiceDetails from './compenents/BodyCompenents/InvoiceDetails'
 function App() {
   const [isDark, setDark] = useState(false);
   const [newInvoice, setNewInvoice] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
 
 
   useEffect(() => {
@@ -43,8 +45,8 @@ function App() {
 
           <Header isDark={isDark} setDark={setDark} />
           <Routes>
-            <Route path='/' element={<Body isDark={isDark} setNewInvoice={setNewInvoice} newInvoice={newInvoice} />} />
-            <Route path='/invoice/:invoiceId' element={<InvoiceDetails isDark={isDark} setNewInvoice={setNewInvoice} newInvoice={newInvoice} />} />
+            <Route path='/' element={<Body isDark={isDark} isEditing={isEditing} setIsEditing={setIsEditing} setNewInvoice={setNewInvoice} newInvoice={newInvoice} />} />
+            <Route path='/invoice/:invoiceId' element={<InvoiceDetails isEditing={isEditing} setIsEditing={setIsEditing} isDark={isDark} setNewInvoice={setNewInvoice} newInvoice={newInvoice} />} />
 
           </Routes>
 
